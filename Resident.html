@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Barangay Market Area Health Information Hub</title>
+    <link rel="stylesheet" href="./Residenttailwind.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="website icon" href="BMA.png" />
+  </head>
+
+  <body class="bg-gray-100 text-sm sm:text-base">
+    <div class="flex min-h-screen">
+      <!-- Sidebar with full height -->
+      <div
+        id="sidebar"
+        class="fixed inset-y-0 left-0 w-60 bg-gray-800 text-white flex-shrink-0 flex flex-col transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 z-40"
+      >
+        <!-- Header -->
+        <div
+          class="flex items-center justify-between p-4 border-b border-gray-700"
+        >
+          <span class="ml-3.5 font-semibold text-xm sm:text-sl leading-tight">
+            Brgy. Market Area<br />Health Information Hub
+          </span>
+
+          <!-- Sidebar close button (for mobile) -->
+          <button
+            id="closeSidebar"
+            class="md:hidden text-white hover:text-gray-300"
+          >
+            <i class="fas fa-times text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Menu -->
+        <div class="px-3 py-6 overflow-y-auto">
+          <h3 class="text-xs uppercase tracking-wider mb-3">Management</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="Dashboard.html"
+                class="flex items-center p-2 font-bold hover:bg-green-900 rounded-lg"
+                ><i class="fas fa-home text-xs"></i
+                ><span class="ml-2 text-sm">Dashboard</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="Appointment.html"
+                class="flex items-center p-2 font-bold hover:bg-green-900 rounded-lg"
+                ><i class="fas fa-calendar-alt text-xs"></i
+                ><span class="ml-2 text-sm">Appointments</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="Medicine.html"
+                class="flex items-center p-2 font-bold hover:bg-green-900 rounded-lg"
+                ><i class="fas fa-pills text-xs"></i
+                ><span class="ml-2 text-sm">Medicine</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="Resident.html"
+                class="flex items-center p-2 font-bold bg-green-600 rounded-lg"
+                ><i class="fas fa-user text-xs"></i
+                ><span class="ml-2 text-sm">Residents</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="Announcement.html"
+                class="flex items-center p-2 font-bold hover:bg-green-900 rounded-lg"
+                ><i class="fas fa-bullhorn text-xs"></i
+                ><span class="ml-2 text-sm">Announcements</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="Settings.html"
+                class="flex items-center p-2 font-bold hover:bg-green-900 rounded-lg"
+                ><i class="fas fa-cog text-xs"></i
+                ><span class="ml-2 text-sm">Settings</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <!-- Main Section -->
+      <div class="flex flex-col h-screen w-full overflow-x-hidden bg-gray-100">
+        <!-- Top Bar - full width of the right side -->
+        <div
+          class="w-full bg-gradient-to-r from-gray-800 to-green-600 shadow p-3 sm:p-4 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Open sidebar button (mobile only) -->
+            <button id="openSidebar" class="md:hidden text-white">
+              <i class="fas fa-bars text-lg"></i>
+            </button>
+
+            <div
+              class="w-12 h-12 sm:w-10 sm:h-10 flex items-center justify-center"
+            >
+              <img
+                src="BMA.png"
+                alt="Logo"
+                class="w-full h-full object-contain rounded-full"
+              />
+            </div>
+            <h1 class="text-base sm:text-xl font-bold text-white">
+              Residence Information Management
+            </h1>
+          </div>
+          <div class="text-white font-medium text-xs sm:text-base">
+            <span id="realTimeClock"></span>
+          </div>
+        </div>
+        <!-- End Top Bar -->
+
+        <!-- Main Content -->
+        <div class="p-6 lg:p-10 overflow-y-auto flex-1">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Residents Section -->
+            <div class="lg:col-span-3 space-y-6">
+              <!-- Now full-width -->
+              <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <!-- Section Header -->
+                <div
+                  class="bg-gradient-to-r from-[#1F2937] to-[#16A34A] px-10 py-4"
+                >
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="text-xl font-semibold text-white flex items-center"
+                    >
+                      <i class="fa-solid fa-user text-2xl mr-4"></i>
+                      Accounts
+                    </h2>
+                  </div>
+                </div>
+                <!-- End Section Header -->
+
+                <!-- Inner Content -->
+                <div class="p-6 space-y-6">
+                  <!-- Archive Header Row -->
+                  <div
+                    class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+                  >
+                    <button
+                      id="showRecordBtn"
+                      onclick="handleRecordButtonClick()"
+                      class="w-full sm:w-auto bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                    >
+                      Show Record
+                    </button>
+                    <div
+                      class="text-sm text-gray-700 font-medium text-center sm:text-right"
+                    >
+                      Total Registered: <span id="registeredCount">0</span>
+                    </div>
+                  </div>
+                  <!-- End Archive Header Row -->
+
+                  <!-- Registered Accounts Archive Section (inside container) -->
+                  <div id="showRecord" class="mt-4 hidden">
+                    <!-- Search Bar -->
+                    <div class="mb-6">
+                      <input
+                        type="text"
+                        id="searchInput"
+                        onkeyup="searchResidents()"
+                        placeholder="Search by Full Name..."
+                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                      />
+                    </div>
+                    <!-- End Search Bar -->
+
+                    <!-- Tab Navigation -->
+                    <div class="mb-6">
+                      <div
+                        class="flex flex-wrap gap-2 border-b border-gray-200"
+                      >
+                        <button
+                          id="tab-pending"
+                          class="px-4 py-2 text-sm font-medium text-yellow-600 border-b-2 border-yellow-600 bg-yellow-50 rounded-t-lg"
+                          onclick="switchTab('pending')"
+                        >
+                          <i class="fas fa-clock mr-2"></i>
+                          Pending Accounts
+                          <span
+                            id="pendingCount"
+                            class="ml-2 text-xs px-2 py-1 rounded-full"
+                            >0</span
+                          >
+                        </button>
+                        <button
+                          id="tab-registered"
+                          class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-t-lg"
+                          onclick="switchTab('registered')"
+                        >
+                          <i class="fas fa-check-circle mr-2"></i>
+                          Registered Accounts
+                          <span
+                            id="registeredTabCount"
+                            class="ml-2 text-xs px-2 py-1 rounded-full"
+                            >0</span
+                          >
+                        </button>
+                        <button
+                          id="tab-cancelled"
+                          class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-t-lg"
+                          onclick="switchTab('cancelled')"
+                        >
+                          <i class="fas fa-times-circle mr-2"></i>
+                          Cancelled Accounts
+                          <span
+                            id="cancelledCount"
+                            class="ml-2 text-xs px-2 py-1 rounded-full"
+                            >0</span
+                          >
+                        </button>
+                      </div>
+                    </div>
+                    <!-- End Tab Navigation -->
+
+                    <!-- Tab Content -->
+                    <div id="tabContent">
+                      <!-- PENDING ACCOUNTS TAB -->
+                      <div id="content-pending" class="tab-content">
+                        <div
+                          class="bg-white rounded-xl shadow-md p-6 space-y-6"
+                        >
+                          <div
+                            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0"
+                          >
+                            <h3
+                              class="text-lg font-semibold text-yellow-600 flex items-center"
+                            >
+                              <i class="fas fa-clock mr-2"></i>
+                              Pending Accounts
+                            </h3>
+                            <div class="text-sm text-gray-600">
+                              Awaiting approval:
+                              <span id="pendingCountDisplay">0</span>
+                            </div>
+                          </div>
+                          <div class="overflow-x-auto">
+                            <table
+                              class="min-w-full border border-gray-200 rounded"
+                            >
+                              <thead class="bg-yellow-100">
+                                <tr
+                                  class="text-left text-sm font-medium text-gray-600"
+                                >
+                                  <th class="py-3 px-4 border-b">Full Name</th>
+                                  <th class="py-3 px-4 border-b">Email</th>
+                                  <th class="py-3 px-4 border-b">Username</th>
+                                  <th class="py-3 px-4 border-b">Status</th>
+                                  <th class="py-3 px-4 border-b text-center">
+                                    Action
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="pendingTableBody">
+                                <!-- Filled by JS -->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- REGISTERED ACCOUNTS TAB -->
+                      <div id="content-registered" class="tab-content hidden">
+                        <div
+                          class="bg-white rounded-xl shadow-md p-6 space-y-6"
+                        >
+                          <div
+                            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0"
+                          >
+                            <h3
+                              class="text-lg font-semibold text-green-600 flex items-center"
+                            >
+                              <i class="fas fa-check-circle mr-2"></i>
+                              Registered Accounts
+                            </h3>
+                            <div class="text-sm text-gray-600">
+                              Total approved:
+                              <span id="registeredCountDisplay">0</span>
+                            </div>
+                          </div>
+
+                          <!-- Registered Accounts Table -->
+                          <div class="overflow-x-auto">
+                            <table
+                              id="registeredTable"
+                              class="min-w-full border border-gray-200 rounded"
+                            >
+                              <thead class="bg-green-100">
+                                <tr
+                                  class="text-left text-sm font-medium text-gray-600"
+                                >
+                                  <th class="py-3 px-4 border-b">Full Name</th>
+                                  <th class="py-3 px-4 border-b">Email</th>
+                                  <th class="py-3 px-4 border-b">Username</th>
+                                  <th class="py-3 px-4 border-b">Status</th>
+                                  <th class="py-3 px-4 border-b">
+                                    Date Registered
+                                  </th>
+                                  <th class="py-3 px-4 border-b text-center">
+                                    Action
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="registeredTableBody">
+                                <!-- Data will be populated by JavaScript -->
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- End Registered Accounts Table -->
+
+                          <!-- Pagination Controls -->
+                          <div
+                            id="paginationControls"
+                            class="flex justify-center mt-4 gap-2 text-sm font-medium"
+                          >
+                            <!-- Buttons will be injected here by JavaScript -->
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- CANCELLED ACCOUNTS TAB -->
+                      <div id="content-cancelled" class="tab-content hidden">
+                        <div
+                          class="bg-white rounded-xl shadow-md p-6 space-y-6"
+                        >
+                          <div
+                            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0"
+                          >
+                            <h3
+                              class="text-lg font-semibold text-red-600 flex items-center"
+                            >
+                              <i class="fas fa-times-circle mr-2"></i>
+                              Cancelled Accounts
+                            </h3>
+                            <div class="text-sm text-gray-600">
+                              Total cancelled:
+                              <span id="cancelledCountDisplay">0</span>
+                            </div>
+                          </div>
+                          <div class="overflow-x-auto">
+                            <table
+                              class="min-w-full border border-gray-200 rounded"
+                            >
+                              <thead class="bg-red-100">
+                                <tr
+                                  class="text-left text-sm font-medium text-gray-600"
+                                >
+                                  <th class="py-3 px-4 border-b">Full Name</th>
+                                  <th class="py-3 px-4 border-b">Email</th>
+                                  <th class="py-3 px-4 border-b">Username</th>
+                                  <th class="py-3 px-4 border-b">Status</th>
+                                  <th class="py-3 px-4 border-b">
+                                    Date Cancelled
+                                  </th>
+                                  <th class="py-3 px-4 border-b text-center">
+                                    Action
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="cancelledTableBody">
+                                <!-- Filled by JS -->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Tab Content -->
+                  </div>
+                  <!-- End Section -->
+                </div>
+                <!-- End Inner Content -->
+              </div>
+              <!-- End bg-white rounded-xl shadow-sm -->
+            </div>
+            <!-- End Residents Section -->
+          </div>
+          <!-- End grid -->
+        </div>
+        <!-- End Main Content -->
+
+        <div
+          id="passwordModal"
+          class="fixed inset-0 bg-black/70 items-center justify-center z-50 hidden transition-opacity duration-300 px-4 sm:px-0"
+        >
+          <div
+            class="bg-white w-full max-w-sm sm:max-w-md md:max-w-lg p-6 sm:p-8 rounded-xl shadow-2xl relative"
+          >
+            <!-- Close Button -->
+            <button
+              onclick="closePasswordModal()"
+              class="absolute top-3 right-4 text-gray-400 hover:text-gray-500"
+            >
+              <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <h2
+              class="text-lg font-bold text-gray-800 mb-4 border-b pb-2 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-lock"></i>
+              Admin Verification
+            </h2>
+
+            <p class="text-sm text-gray-600 mb-2">
+              Enter admin password to proceed:
+            </p>
+
+            <input
+              type="password"
+              id="adminPasswordInput"
+              class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Enter password"
+            />
+            <p id="passwordError" class="text-red-500 text-xs mt-2 hidden">
+              Incorrect password. Please try again.
+            </p>
+
+            <div class="mt-4 flex flex-col sm:flex-row justify-end gap-2">
+              <button
+                onclick="closePasswordModal()"
+                class="w-full sm:w-auto px-4 py-2 text-sm bg-gray-300 rounded hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+              <button
+                onclick="verifyPassword()"
+                class="w-full sm:w-auto px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div
+          id="confirmationModal"
+          class="fixed inset-0 z-50 hidden bg-black/70 justify-center items-center px-4 sm:px-6"
+        >
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg w-full max-w-md text-center animate-fade-in"
+          >
+            <!-- Icon and Title -->
+            <div class="text-yellow-500 text-4xl sm:text-5xl mb-4">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-bold mb-2">Are you sure?</h2>
+            <p
+              id="confirmationMessage"
+              class="text-gray-600 mb-6 text-sm sm:text-base"
+            >
+              Do you really want to perform this action?
+            </p>
+
+            <!-- Buttons -->
+            <div
+              class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
+            >
+              <button
+                id="confirmActionBtn"
+                class="bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-md flex items-center justify-center gap-2 transition-colors w-full sm:w-auto"
+              >
+                <i class="fas fa-check-circle"></i> Continue
+              </button>
+              <button
+                id="cancelActionBtn"
+                class="bg-gray-400 hover:bg-gray-500 text-white px-5 py-2.5 rounded-md flex items-center justify-center gap-2 transition-colors w-full sm:w-auto"
+              >
+                <i class="fas fa-times-circle"></i> Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+          id="residentModal"
+          class="fixed inset-0 bg-black/70 items-center justify-center z-50 hidden transition-opacity duration-300 px-4 sm:px-6"
+        >
+          <div
+            class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-screen overflow-hidden relative animate-fade-in"
+          >
+            <!-- Scrollable Content Wrapper -->
+            <div class="p-6 sm:p-8 overflow-y-auto max-h-[90vh]">
+              <!-- Close Button -->
+              <button
+                onclick="closeModal()"
+                class="absolute top-3 right-3 text-gray-400 hover:text-gray-500 transition-colors z-10"
+                aria-label="Close Modal"
+              >
+                <i class="fas fa-times text-lg"></i>
+              </button>
+
+              <!-- Modal Header -->
+              <h2
+                class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 border-b pb-2 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-circle-user"></i>
+                Resident Details
+              </h2>
+
+              <!-- Resident Info Grid -->
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4 text-sm sm:text-base text-gray-700"
+              >
+                <p>
+                  <span class="font-medium">Full Name:</span>
+                  <span id="modalFullName"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Age:</span>
+                  <span id="modalAge"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Birthday:</span>
+                  <span id="modalBirthday"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Sex:</span>
+                  <span id="modalSex"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Civil Status:</span>
+                  <span id="modalCivilStatus"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Nationality:</span>
+                  <span id="modalNationality"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Religion:</span>
+                  <span id="modalReligion"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Address:</span>
+                  <span id="modalAddress"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Contact #:</span>
+                  <span id="modalContact"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Email:</span>
+                  <span id="modalEmail"></span>
+                </p>
+                <p>
+                  <span class="font-medium">Username:</span>
+                  <span id="modalUsername"></span>
+                </p>
+
+                <!-- Attachment Section -->
+                <div class="mt-4 space-y-4" id="residentAttachments">
+                  <h4 class="text-sm font-semibold text-gray-700">
+                    Attachments
+                  </h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label class="text-xs text-gray-500 block mb-1"
+                        >Valid ID</label
+                      >
+                      <img
+                        id="validIdPreview"
+                        src=""
+                        alt="Valid ID"
+                        class="w-full h-40 object-cover border rounded shadow mb-2"
+                      />
+                      <a
+                        id="validIdLink"
+                        href="#"
+                        target="_blank"
+                        class="text-green-500 text-xs hover:underline"
+                        >View Full Image</a
+                      >
+                    </div>
+
+                    <div>
+                      <label class="text-xs text-gray-500 block mb-1"
+                        >Proof of Residency</label
+                      >
+                      <img
+                        id="residencyProofPreview"
+                        src=""
+                        alt="Proof of Residency"
+                        class="w-full h-40 object-cover border rounded shadow mb-2"
+                      />
+                      <a
+                        id="residencyProofLink"
+                        href="#"
+                        target="_blank"
+                        class="text-green -500 text-xs hover:underline"
+                        >View Full Image</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- You can add more fields here as needed -->
+              </div>
+              <!-- Action buttons section (add this before the close button) -->
+              <div
+                id="modalActionButtons"
+                class="mt-6 pt-4 border-t border-gray-200 hidden"
+              >
+                <div class="flex gap-3 justify-end">
+                  <button
+                    id="modalApproveBtn"
+                    class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hidden"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    id="modalRejectBtn"
+                    class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors hidden"
+                  >
+                    Reject
+                  </button>
+                  <button
+                    id="modalRemoveBtn"
+                    class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors hidden"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Modal -->
+      </div>
+      <!-- End Main Section -->
+    </div>
+    <!-- End flex min-h-screen -->
+
+    <script>
+      // Global variables
+      let currentTab = "pending";
+      let currentPage = 1;
+      const itemsPerPage = 10;
+      let allResidents = [];
+      let filteredResidents = [];
+      let selectedAction = null;
+      let currentResidentId = null;
+
+      // Sample data for demonstration
+      const sampleResidents = [
+        {
+          id: 1,
+          fullName: "Juan Dela Cruz",
+          age: 35,
+          birthday: "1988-05-15",
+          sex: "Male",
+          civilStatus: "Married",
+          nationality: "Filipino",
+          religion: "Catholic",
+          address: "123 Main St, Barangay Market Area",
+          contact: "09123456789",
+          email: "juan.delacruz@email.com",
+          username: "juandc",
+          validIdUrl: "BHALL.jpg",
+          residencyProofUrl: "BHALL.jpg",
+          status: "pending",
+          dateRegistered: "2024-01-15",
+          dateCancelled: null,
+        },
+        {
+          id: 2,
+          fullName: "Maria Santos",
+          age: 28,
+          birthday: "1995-08-22",
+          sex: "Female",
+          civilStatus: "Single",
+          nationality: "Filipino",
+          religion: "Catholic",
+          address: "456 Second St, Barangay Market Area",
+          contact: "09234567890",
+          email: "maria.santos@email.com",
+          username: "mariasantos",
+          status: "registered",
+          validIdUrl: "assets/ids/juan-id.jpg",
+          residencyProofUrl: "assets/proofs/juan-proof.jpg",
+          dateRegistered: "2024-01-10",
+          dateCancelled: null,
+        },
+        {
+          id: 3,
+          fullName: "Pedro Rodriguez",
+          age: 42,
+          birthday: "1981-12-03",
+          sex: "Male",
+          civilStatus: "Married",
+          nationality: "Filipino",
+          religion: "Protestant",
+          address: "789 Third Ave, Barangay Market Area",
+          contact: "09345678901",
+          email: "pedro.rodriguez@email.com",
+          username: "pedrorod",
+          status: "cancelled",
+          validIdUrl: "assets/ids/juan-id.jpg",
+          residencyProofUrl: "assets/proofs/juan-proof.jpg",
+          dateRegistered: "2024-01-05",
+          dateCancelled: "2024-01-20",
+        },
+        {
+          id: 4,
+          fullName: "Ana Reyes",
+          age: 31,
+          birthday: "1992-03-18",
+          sex: "Female",
+          civilStatus: "Widowed",
+          nationality: "Filipino",
+          religion: "Catholic",
+          address: "321 Fourth St, Barangay Market Area",
+          contact: "09456789012",
+          email: "ana.reyes@email.com",
+          username: "anareyes",
+          status: "pending",
+          validIdUrl: "assets/ids/juan-id.jpg",
+          residencyProofUrl: "assets/proofs/juan-proof.jpg",
+          dateRegistered: "2024-01-18",
+          dateCancelled: null,
+        },
+        {
+          id: 5,
+          fullName: "Carlos Mendoza",
+          age: 38,
+          birthday: "1985-07-11",
+          sex: "Male",
+          civilStatus: "Single",
+          nationality: "Filipino",
+          religion: "Catholic",
+          address: "654 Fifth Ave, Barangay Market Area",
+          contact: "09567890123",
+          email: "carlos.mendoza@email.com",
+          username: "carlosmendoza",
+          status: "registered",
+          validIdUrl: "assets/ids/juan-id.jpg",
+          residencyProofUrl: "assets/proofs/juan-proof.jpg",
+          dateRegistered: "2024-01-12",
+          dateCancelled: null,
+        },
+      ];
+
+      // Initialize the application
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeApp();
+      });
+
+      function initializeApp() {
+        // Load sample data
+        allResidents = [...sampleResidents];
+        filteredResidents = [...allResidents];
+
+        // Initialize UI elements
+        initializeSidebar();
+        initializeRealTimeClock();
+        updateCounts();
+
+        // Set default tab
+        switchTab("pending");
+      }
+
+      // Sidebar functionality
+      function initializeSidebar() {
+        const openSidebarBtn = document.getElementById("openSidebar");
+        const closeSidebarBtn = document.getElementById("closeSidebar");
+        const sidebar = document.getElementById("sidebar");
+
+        if (openSidebarBtn && sidebar) {
+          openSidebarBtn.addEventListener("click", function () {
+            sidebar.classList.remove("-translate-x-full");
+          });
+        }
+
+        if (closeSidebarBtn && sidebar) {
+          closeSidebarBtn.addEventListener("click", function () {
+            sidebar.classList.add("-translate-x-full");
+          });
+        }
+
+        // Close sidebar when clicking outside on mobile
+        if (sidebar) {
+          document.addEventListener("click", function (event) {
+            if (window.innerWidth < 768) {
+              if (
+                !sidebar.contains(event.target) &&
+                openSidebarBtn &&
+                !openSidebarBtn.contains(event.target)
+              ) {
+                sidebar.classList.add("-translate-x-full");
+              }
+            }
+          });
+        }
+      }
+
+      // Real-time clock
+      function initializeRealTimeClock() {
+        function updateClock() {
+          const now = new Date();
+          const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true,
+          };
+          const timeString = now.toLocaleDateString("en-US", options);
+          const clockElement = document.getElementById("realTimeClock");
+          if (clockElement) {
+            clockElement.textContent = timeString;
+          }
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+      }
+
+      // Show/Hide record functionality
+      function handleRecordButtonClick() {
+        const showRecord = document.getElementById("showRecord");
+
+        // If records are already visible, hide them without password
+        if (!showRecord.classList.contains("hidden")) {
+          showRecord.classList.add("hidden");
+          const btn = document.getElementById("showRecordBtn");
+          btn.textContent = "Show Record";
+          btn.classList.remove("bg-red-500", "hover:bg-red-600");
+          btn.classList.add("bg-green-600", "hover:bg-green-700");
+          return;
+        }
+
+        // Otherwise, prompt for password first
+        currentResidentId = null; // ensure not viewing a resident
+        const modal = document.getElementById("passwordModal");
+        if (modal) {
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+
+          const passwordInput = document.getElementById("adminPasswordInput");
+          const passwordError = document.getElementById("passwordError");
+
+          if (passwordInput) passwordInput.value = "";
+          if (passwordError) passwordError.classList.add("hidden");
+        }
+      }
+
+      // Tab switching functionality
+      function switchTab(tabName) {
+        currentTab = tabName;
+        currentPage = 1;
+
+        // Update tab buttons
+        const tabs = ["pending", "registered", "cancelled"];
+        tabs.forEach((tab) => {
+          const tabButton = document.getElementById(`tab-${tab}`);
+          const tabContent = document.getElementById(`content-${tab}`);
+
+          // Reset count badge styles
+          const countSpan = document.getElementById(
+            tab === "registered" ? "registeredTabCount" : `${tab}Count`
+          );
+
+          if (countSpan) {
+            if (tab === tabName) {
+              // Active tab: apply original colored styles
+              if (tab === "pending") {
+                countSpan.className =
+                  "ml-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full";
+              } else if (tab === "registered") {
+                countSpan.className =
+                  "ml-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full";
+              } else if (tab === "cancelled") {
+                countSpan.className =
+                  "ml-2 bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full";
+              }
+            } else {
+              // Inactive tab: remove background/text color
+              countSpan.className =
+                " bg-gray-200 ml-2 text-xs px-2 py-1 rounded-full"; // No bg or color
+            }
+          }
+
+          if (tabButton && tabContent) {
+            if (tab === tabName) {
+              // Active tab styling
+              tabButton.classList.remove(
+                "text-gray-600",
+                "hover:text-green-600",
+                "hover:bg-green-50",
+                "hover:text-red-600",
+                "hover:bg-red-50"
+              );
+              tabContent.classList.remove("hidden");
+
+              if (tab === "pending") {
+                tabButton.classList.add(
+                  "text-yellow-600",
+                  "border-b-2",
+                  "border-yellow-600",
+                  "bg-yellow-50"
+                );
+              } else if (tab === "registered") {
+                tabButton.classList.add(
+                  "text-green-600",
+                  "border-b-2",
+                  "border-green-600",
+                  "bg-green-50"
+                );
+              } else if (tab === "cancelled") {
+                tabButton.classList.add(
+                  "text-red-600",
+                  "border-b-2",
+                  "border-red-600",
+                  "bg-red-50"
+                );
+              }
+            } else {
+              // Inactive tab styling
+              tabButton.classList.remove(
+                "text-yellow-600",
+                "border-b-2",
+                "border-yellow-600",
+                "bg-yellow-50",
+                "text-green-600",
+                "border-green-600",
+                "bg-green-50",
+                "text-red-600",
+                "border-red-600",
+                "bg-red-50"
+              );
+              tabButton.classList.add("text-gray-600");
+              tabContent.classList.add("hidden");
+
+              if (tab === "registered") {
+                tabButton.classList.add(
+                  "hover:text-green-600",
+                  "hover:bg-green-50"
+                );
+              } else if (tab === "cancelled") {
+                tabButton.classList.add(
+                  "hover:text-red-600",
+                  "hover:bg-red-50"
+                );
+              }
+            }
+          }
+        });
+
+        // Load data for the selected tab
+        loadTabData();
+      }
+
+      // Load data for current tab
+      function loadTabData() {
+        const searchInput = document.getElementById("searchInput");
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : "";
+
+        // Filter residents based on current tab and search term
+        filteredResidents = allResidents.filter((resident) => {
+          const matchesTab = resident.status === currentTab;
+          const matchesSearch =
+            resident.fullName.toLowerCase().includes(searchTerm) ||
+            resident.email.toLowerCase().includes(searchTerm) ||
+            resident.username.toLowerCase().includes(searchTerm);
+          return matchesTab && matchesSearch;
+        });
+
+        if (currentTab === "pending") {
+          loadPendingAccounts();
+        } else if (currentTab === "registered") {
+          loadRegisteredAccounts();
+        } else if (currentTab === "cancelled") {
+          loadCancelledAccounts();
+        }
+
+        updateCounts();
+      }
+
+      // Load pending accounts
+      function loadPendingAccounts() {
+        const tbody = document.getElementById("pendingTableBody");
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+
+        filteredResidents.forEach((resident) => {
+          const row = document.createElement("tr");
+          row.className = "hover:bg-yellow-50 border-b cursor-pointer";
+          row.onclick = () => showResidentModal(resident.id);
+          row.innerHTML = `
+      <td class="py-3 px-4 font-medium">${resident.fullName}</td>
+      <td class="py-3 px-4">${resident.email}</td>
+      <td class="py-3 px-4">${resident.username}</td>
+      <td class="py-3 px-4">
+          <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">
+              Pending
+          </span>
+      </td>
+       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+    <div class="flex justify-center">
+      <button class="text-blue-500 hover:text-blue-700" onclick="showResidentModal(${resident.id})">
+        <i class="fas fa-eye"></i>
+      </button>
+    </div>
+  </td>
+  `;
+          tbody.appendChild(row);
+        });
+      }
+
+      // Load registered accounts with pagination
+      function loadRegisteredAccounts() {
+        const tbody = document.getElementById("registeredTableBody");
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedResidents = filteredResidents.slice(
+          startIndex,
+          endIndex
+        );
+
+        paginatedResidents.forEach((resident) => {
+          const row = document.createElement("tr");
+          row.className = "hover:bg-green-50 border-b cursor-pointer";
+          row.onclick = () => showResidentModal(resident.id);
+          row.innerHTML = `
+<td class="py-3 px-4 font-medium">${resident.fullName}</td>
+<td class="py-3 px-4">${resident.email}</td>
+<td class="py-3 px-4">${resident.username}</td>
+<td class="py-3 px-4">
+    <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
+        Registered
+    </span>
+</td>
+<td class="py-3 px-4">${resident.dateRegistered}</td>
+ <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+    <div class="flex justify-center">
+      <button class="text-blue-500 hover:text-blue-700" onclick="showResidentModal(${resident.id})">
+        <i class="fas fa-eye"></i>
+      </button>
+    </div>
+  </td>
+`;
+          tbody.appendChild(row);
+        });
+
+        updatePaginationControls();
+      }
+
+      // Load cancelled accounts
+      function loadCancelledAccounts() {
+        const tbody = document.getElementById("cancelledTableBody");
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+
+        filteredResidents.forEach((resident) => {
+          const row = document.createElement("tr");
+          row.className = "hover:bg-red-50 border-b cursor-pointer";
+          row.onclick = () => showResidentModal(resident.id);
+          row.innerHTML = `
+      <td class="py-3 px-4 font-medium">${resident.fullName}</td>
+      <td class="py-3 px-4">${resident.email}</td>
+      <td class="py-3 px-4">${resident.username}</td>
+      <td class="py-3 px-4">
+          <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">
+              Cancelled
+          </span>
+      </td>
+      <td class="py-3 px-4">${resident.dateCancelled || "N/A"}</td>
+       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+    <div class="flex justify-center">
+      <button class="text-blue-500 hover:text-blue-700" onclick="showResidentModal(${
+        resident.id
+      })">
+        <i class="fas fa-eye"></i>
+      </button>
+    </div>
+  </td>
+  `;
+          tbody.appendChild(row);
+        });
+      }
+
+      // Update pagination controls
+      function updatePaginationControls() {
+        const totalPages = Math.ceil(filteredResidents.length / itemsPerPage);
+        const paginationControls =
+          document.getElementById("paginationControls");
+
+        if (!paginationControls) return;
+
+        paginationControls.innerHTML = "";
+
+        if (totalPages <= 1) return;
+
+        // Previous button
+        const prevBtn = document.createElement("button");
+        prevBtn.className = `px-3 py-1 rounded ${
+          currentPage === 1
+            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+        }`;
+        prevBtn.textContent = "Previous";
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => {
+          if (currentPage > 1) {
+            currentPage--;
+            loadTabData();
+          }
+        };
+        paginationControls.appendChild(prevBtn);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const pageBtn = document.createElement("button");
+          pageBtn.className = `px-3 py-1 rounded ${
+            i === currentPage
+              ? "bg-green-600 text-white"
+              : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+          }`;
+          pageBtn.textContent = i;
+          pageBtn.onclick = () => {
+            currentPage = i;
+            loadTabData();
+          };
+          paginationControls.appendChild(pageBtn);
+        }
+
+        // Next button
+        const nextBtn = document.createElement("button");
+        nextBtn.className = `px-3 py-1 rounded ${
+          currentPage === totalPages
+            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+        }`;
+        nextBtn.textContent = "Next";
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            loadTabData();
+          }
+        };
+        paginationControls.appendChild(nextBtn);
+      }
+
+      // Update counts
+      function updateCounts() {
+        const pendingCount = allResidents.filter(
+          (r) => r.status === "pending"
+        ).length;
+        const registeredCount = allResidents.filter(
+          (r) => r.status === "registered"
+        ).length;
+        const cancelledCount = allResidents.filter(
+          (r) => r.status === "cancelled"
+        ).length;
+
+        // Update count displays
+        const elements = [
+          { id: "registeredCount", count: registeredCount },
+          { id: "pendingCount", count: pendingCount },
+          { id: "registeredTabCount", count: registeredCount },
+          { id: "cancelledCount", count: cancelledCount },
+          { id: "pendingCountDisplay", count: pendingCount },
+          { id: "registeredCountDisplay", count: registeredCount },
+          { id: "cancelledCountDisplay", count: cancelledCount },
+        ];
+
+        elements.forEach(({ id, count }) => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.textContent = count;
+          }
+        });
+      }
+
+      // Search functionality
+      function searchResidents() {
+        loadTabData();
+      }
+
+      // Show password modal first when clicking on a resident
+      function showResidentModal(id) {
+        currentResidentId = id;
+        const modal = document.getElementById("passwordModal");
+        if (modal) {
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+
+          const passwordInput = document.getElementById("adminPasswordInput");
+          const passwordError = document.getElementById("passwordError");
+
+          if (passwordInput) passwordInput.value = "";
+          if (passwordError) passwordError.classList.add("hidden");
+        }
+      }
+
+      // Modified to show resident details after password verification
+      function verifyPassword() {
+        // For now, no password is required - proceed directly
+        closePasswordModal();
+        if (currentResidentId !== null) {
+          viewResident(currentResidentId);
+        } else {
+          // Show the record section after password entry
+          const showRecord = document.getElementById("showRecord");
+          const showRecordBtn = document.getElementById("showRecordBtn");
+          if (showRecord && showRecordBtn) {
+            showRecord.classList.remove("hidden");
+            showRecordBtn.textContent = "Hide Record";
+            showRecordBtn.classList.remove(
+              "bg-green-600",
+              "hover:bg-green-700"
+            );
+            showRecordBtn.classList.add("bg-red-500", "hover:bg-red-600");
+            loadTabData(); // populate the tabs
+          }
+        }
+      }
+
+      // Enhanced viewResident function with action buttons in modal
+      function viewResident(id) {
+        const resident = allResidents.find((r) => r.id === id);
+        if (!resident) return;
+
+        // Populate modal with resident data - check if elements exist
+        const modalElements = [
+          { id: "modalFullName", value: resident.fullName },
+          { id: "modalAge", value: resident.age },
+          { id: "modalBirthday", value: resident.birthday },
+          { id: "modalSex", value: resident.sex },
+          { id: "modalCivilStatus", value: resident.civilStatus },
+          { id: "modalNationality", value: resident.nationality },
+          { id: "modalReligion", value: resident.religion },
+          { id: "modalAddress", value: resident.address },
+          { id: "modalContact", value: resident.contact },
+          { id: "modalEmail", value: resident.email },
+          { id: "modalUsername", value: resident.username },
+        ];
+
+        modalElements.forEach(({ id, value }) => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.textContent = value;
+          }
+        });
+
+        // Show attached images (Valid ID and Proof of Residency)
+        const validIdImg = document.getElementById("validIdPreview");
+        const residencyProofImg = document.getElementById(
+          "residencyProofPreview"
+        );
+        const validIdLink = document.getElementById("validIdLink");
+        const residencyProofLink =
+          document.getElementById("residencyProofLink");
+
+        if (validIdImg && validIdLink) {
+          const validUrl = resident.validIdUrl || "assets/default-id.png";
+          validIdImg.src = validUrl;
+          validIdLink.href = validUrl;
+        }
+
+        if (residencyProofImg && residencyProofLink) {
+          const proofUrl =
+            resident.residencyProofUrl || "assets/default-proof.png";
+          residencyProofImg.src = proofUrl;
+          residencyProofLink.href = proofUrl;
+        }
+
+        // Show/hide action buttons based on resident status
+        const modalActionButtons =
+          document.getElementById("modalActionButtons");
+        const approveBtn = document.getElementById("modalApproveBtn");
+        const rejectBtn = document.getElementById("modalRejectBtn");
+        const removeBtn = document.getElementById("modalRemoveBtn");
+
+        if (modalActionButtons && approveBtn && rejectBtn && removeBtn) {
+          if (resident.status === "pending") {
+            // Show approve and reject buttons for pending residents
+            modalActionButtons.classList.remove("hidden");
+            approveBtn.classList.remove("hidden");
+            rejectBtn.classList.remove("hidden");
+            removeBtn.classList.add("hidden");
+
+            // Set onclick handlers - show confirmation modal
+            approveBtn.onclick = () => {
+              closeModal();
+              showConfirmationModal("approve", id, resident.fullName);
+            };
+            rejectBtn.onclick = () => {
+              closeModal();
+              showConfirmationModal("reject", id, resident.fullName);
+            };
+          } else {
+            // Hide all action buttons for registered and cancelled residents
+            modalActionButtons.classList.add("hidden");
+          }
+        }
+
+        // Show modal
+        const modal = document.getElementById("residentModal");
+        if (modal) {
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        }
+      }
+
+      // Direct action functions without password confirmation
+      function approveResident(id) {
+        const residentIndex = allResidents.findIndex((r) => r.id === id);
+        if (residentIndex === -1) return;
+
+        allResidents[residentIndex].status = "registered";
+        showNotification("Resident approved successfully!", "success");
+        loadTabData();
+      }
+
+      function rejectResident(id) {
+        const residentIndex = allResidents.findIndex((r) => r.id === id);
+        if (residentIndex === -1) return;
+
+        allResidents[residentIndex].status = "cancelled";
+        allResidents[residentIndex].dateCancelled = new Date()
+          .toISOString()
+          .split("T")[0];
+        showNotification("Resident rejected successfully!", "success");
+        loadTabData();
+      }
+
+      function removeResident(id) {
+        const residentIndex = allResidents.findIndex((r) => r.id === id);
+        if (residentIndex === -1) return;
+
+        allResidents[residentIndex].status = "cancelled";
+        allResidents[residentIndex].dateCancelled = new Date()
+          .toISOString()
+          .split("T")[0];
+        showNotification("Resident removed successfully!", "success");
+        loadTabData();
+      }
+
+      // Show confirmation modal for approve/reject actions
+      function showConfirmationModal(action, id, fullName) {
+        const modal = document.getElementById("confirmationModal");
+        if (!modal) return;
+
+        const actionText = action === "approve" ? "approve" : "reject";
+
+        // Update modal content
+        const confirmationMessage = document.getElementById(
+          "confirmationMessage"
+        );
+        const confirmButton = document.getElementById("confirmActionBtn");
+        const cancelButton = document.getElementById("cancelActionBtn");
+
+        if (confirmationMessage) {
+          confirmationMessage.textContent = `Are you sure you want to ${actionText} ${fullName}?`;
+        }
+
+        if (confirmButton) {
+          confirmButton.innerHTML = `${
+            action === "approve"
+              ? '<i class="fas fa-check-circle mr-2"></i> Approve'
+              : '<i class="fas fa-times-circle mr-2"></i> Reject'
+          }`;
+
+          confirmButton.className = `px-4 py-2 rounded-lg text-white font-medium ${
+            action === "approve"
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-red-500 hover:bg-red-600"
+          }`;
+
+          // Set onclick handler
+          confirmButton.onclick = () => {
+            closeConfirmationModal();
+            if (action === "approve") {
+              approveResident(id);
+            } else {
+              rejectResident(id);
+            }
+          };
+        }
+
+        if (cancelButton) {
+          cancelButton.onclick = () => {
+            closeConfirmationModal();
+            viewResident(id);
+          };
+        }
+
+        // Show modal
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      // Close confirmation modal
+      function closeConfirmationModal() {
+        const modal = document.getElementById("confirmationModal");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      }
+
+      // Close resident modal
+      function closeModal() {
+        const modal = document.getElementById("residentModal");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+        currentResidentId = null;
+      }
+
+      function closePasswordModal() {
+        const modal = document.getElementById("passwordModal");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      }
+
+      // Notification system
+      function showNotification(message, type = "info") {
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
+
+        // Set notification style based on type
+        switch (type) {
+          case "success":
+            notification.classList.add("bg-green-500", "text-white");
+            break;
+          case "error":
+            notification.classList.add("bg-red-500", "text-white");
+            break;
+          case "warning":
+            notification.classList.add("bg-yellow-500", "text-white");
+            break;
+          default:
+            notification.classList.add("bg-blue-500", "text-white");
+        }
+
+        notification.innerHTML = `
+  <div class="flex items-center justify-between">
+      <span>${message}</span>
+  </div>
+`;
+
+        document.body.appendChild(notification);
+
+        // Get timer element
+        const timerElement = notification.querySelector('[id^="timer-"]');
+        let countdown = 3;
+
+        // Update timer every second
+        const timerInterval = setInterval(() => {
+          countdown--;
+          if (timerElement && countdown > 0) {
+            timerElement.textContent = countdown;
+          }
+        }, 1000);
+
+        // Animate in
+        setTimeout(() => {
+          notification.classList.remove("translate-x-full");
+        }, 100);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          clearInterval(timerInterval);
+          notification.classList.add("translate-x-full");
+          setTimeout(() => {
+            if (notification.parentElement) {
+              notification.remove();
+            }
+          }, 300);
+        }, 3000);
+      }
+
+      // Keyboard event listeners
+      document.addEventListener("keydown", function (event) {
+        // Close modals with Escape key
+        if (event.key === "Escape") {
+          closeModal();
+          closePasswordModal();
+          closeConfirmationModal();
+        }
+
+        // Submit password with Enter key
+        const passwordModal = document.getElementById("passwordModal");
+        if (
+          event.key === "Enter" &&
+          passwordModal &&
+          passwordModal.classList.contains("flex")
+        ) {
+          verifyPassword();
+        }
+      });
+
+      function updateDateTime() {
+        const now = new Date();
+        const options = {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        };
+        document.getElementById("realTimeClock").textContent =
+          now.toLocaleTimeString("en-US", options);
+      }
+
+      // Sidebar functionality
+      const sidebar = document.getElementById("sidebar");
+      const openSidebar = document.getElementById("openSidebar");
+      const closeSidebar = document.getElementById("closeSidebar");
+
+      openSidebar?.addEventListener("click", () => {
+        sidebar.classList.remove("-translate-x-full");
+      });
+
+      closeSidebar?.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+      });
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        updateRegisteredCount();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "index": "npx @tailwindcss/cli -i ./index.css -o ./indexLogintailwind.css --watch",
+    "dashboard": "npx @tailwindcss/cli -i ./Dashboard.css -o ./Dashboardtailwind.css --watch",
+    "appointment": "npx @tailwindcss/cli -i ./Appointment.css -o ./Appointmenttailwind.css --watch",
+    "medicine": "npx @tailwindcss/cli -i ./Medicine.css -o ./Medicinetailwind.css --watch",
+    "resident": "npx @tailwindcss/cli -i ./Resident.css -o ./Residenttailwind.css --watch",
+    "announcement": "npx @tailwindcss/cli -i ./Announcement.css -o ./Announcementtailwind.css --watch",
+    "settings": "npx @tailwindcss/cli -i ./Settings.css -o ./Settingstailwind.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  }
+}
